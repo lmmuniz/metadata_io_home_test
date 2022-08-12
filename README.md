@@ -44,26 +44,26 @@ The result pipeline is using a Docker Compose solution with:
 In order to build and run, follow the below steps:
 
 1. Make sure in docker-compose.yml, the Environment Variable API_KEY is using a valid OpenWeatherMap access key
-2. Build the Pipeline container: docker compose build pipeline
+2. Build the Pipeline container: **docker compose build pipeline**
 3. Execute the Docker Compose:
-    - Postgres Database in Detached mode: docker compose up -d db
-    - Python Pipeline: docker compose run pipeline
+    - Postgres Database in Detached mode: **docker compose up -d db**
+    - Python Pipeline: **docker compose run pipeline**
 
 4. The pipeline will run the base code:
     1. to pull API result for 10 locations, first finding the Latitude and Longitude of OpenWeatherMap Geocoder API
     2. For each resulted Lat/Lon will then call OpenWeatherMap TimeMachine API of last 5 days of today's in (UTC)
     3. It will parse the result adding the Location found in Geocoder (City Name, State Name, Country Code, Latitude, Longitude, Date in Text format)
-    4. To save the result in Database, code will first check in Postgres Database if table (public.weather) exists:
-        1. If table (public.weather) does exist, it will open a Database Transaction:
+    4. To save the result in Database, code will first check in Postgres Database if table **(public.weather)** exists:
+        1. If table **(public.weather)** does exist, it will open a Database Transaction:
             - First to Delete the Locations and Distinct Dates existing in the Dataframe
-            - Save the Dataframe result into the table (public.weather)
-        2. If table (public.weather) does not exist, it just save the Dataframe data into the target table (creating the table in database)
+            - Save the Dataframe result into the table **(public.weather)**
+        2. If table **(public.weather)** does not exist, it just save the Dataframe data into the target table (creating the table in database)
     5. For each analytical datasets required:
         1. Whitin a Database Transaction
             - It drops the table if exists in database if it exists
             - It creates a table using a select statement for each business logic
             - The tables to be created are: 
-                - public.weather_date_stats
-                - public.highest_temp
+                - **public.weather_date_stats**
+                - **public.highest_temp**
 
 
