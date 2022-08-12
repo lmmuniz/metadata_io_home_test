@@ -22,7 +22,7 @@ services:
       dockerfile: ./Dockerfile
     restart: "no"
     environment:
-      - API_KEY=550959973c2f88d5e307e26e90f233c7
+      - API_KEY={add_your_api_key_here}
       - DB_HOST=db
       - DB_PORT=5432
       - DB_NAME=metadata
