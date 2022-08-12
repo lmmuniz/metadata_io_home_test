@@ -8,9 +8,6 @@ import psycopg2
 import os
 
 API_KEY = os.environ.get('API_KEY') 
-#'550959973c2f88d5e307e26e90f233c7'
-#'b6d0d244211b07f25d24d54451ea87a4'
-#'550959973c2f88d5e307e26e90f233c7'
 DB_USER = os.environ.get('DB_USER') 
 DB_PWD = os.environ.get('DB_PWD')
 DB_HOST = os.environ.get('DB_HOST')
