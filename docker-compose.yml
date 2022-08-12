@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  db:
+    container_name: pg_meta
+    image: postgres
+    restart: always
+    environment:
+        POSTGRES_DB: metadata
+        POSTGRES_USER: metadata
+        POSTGRES_PASSWORD: metadata
+        PGUSER: metadata
+    ports:
+      - 5435:5432
+    expose:
+      - "5432"
+
+  pipeline:
+    container_name: pipe
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: "no"
+    environment:
+      - API_KEY=550959973c2f88d5e307e26e90f233c7
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=metadata
+      - DB_USER=metadata
+      - DB_PWD=metadata
+      - DB_SCHAME=public
+    depends_on:
+      - db
+    ports:
+      - "8000:5000"
+    links:
+      - db
