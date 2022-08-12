@@ -46,8 +46,8 @@ In order to build and run, follow the below steps:
 1. Make sure in docker-compose.yml, the Environment Variable API_KEY is using a valid OpenWeatherMap access key
 2. Build the Pipeline container: docker compose build pipeline
 3. Execute the Docker Compose:
-    3.1. Postgres Database in Detached mode: docker compose up -d db
-    3.2. Python Pipeline: docker compose run pipeline
+    - Postgres Database in Detached mode: docker compose up -d db
+    - Python Pipeline: docker compose run pipeline
 
 4. The pipeline will run the base code:
     1. to pull API result for 10 locations, first finding the Latitude and Longitude of OpenWeatherMap Geocoder API
