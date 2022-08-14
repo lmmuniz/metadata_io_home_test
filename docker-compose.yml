@@ -28,7 +28,7 @@ services:
       - DB_NAME=metadata
       - DB_USER=metadata
       - DB_PWD=metadata
-      - DB_SCHAME=public
+      - DB_SCHEMA=public
     depends_on:
       - db
     ports:
