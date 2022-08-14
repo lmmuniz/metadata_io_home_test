@@ -66,4 +66,32 @@ In order to build and run, follow the below steps:
                 - **public.weather_date_stats**
                 - **public.highest_temp**
 
+Evidences:
+
+1. When first run the Pipeline, and table public.weather does not exist:
+
+![image](https://user-images.githubusercontent.com/39410838/184519317-e80ad9ba-704a-4aa0-87df-38e2a67d3b4b.png)
+
+2. Tables gets created in Postgres database:
+
+![image](https://user-images.githubusercontent.com/39410838/184519324-d8560b85-9e9f-43eb-9769-fc0d44d916dd.png)
+
+3. Table public.weather is populated:
+
+![image](https://user-images.githubusercontent.com/39410838/184519349-c0a088c5-6058-47dc-ab1b-5f0ecb554bbb.png)
+
+4. Table public.highest_temp is also created, showing the date and highest temperature for each city:
+
+![image](https://user-images.githubusercontent.com/39410838/184519360-28279253-5a77-465e-92dc-55e65ad1a4e0.png)
+
+5. Table public.weather_date_stats is also created, showing the last 5 days, average/min/max temperature and the city where the max temperature reached:
+
+![image](https://user-images.githubusercontent.com/39410838/184519374-d75d562d-f9b7-4817-9ab7-d78b22e422d4.png)
+
+6. When subsequent runs, as tables exists, it gets first existing records (latitude, longitude and dt column) and then inserting fresh data to the table (public.weather) and recalculating analytical tables (public.highest_temp and public.weather_date_stats):
+
+![image](https://user-images.githubusercontent.com/39410838/184519432-98445a93-c9bc-401e-aea6-27999259a4e3.png)
+
+
+
 
